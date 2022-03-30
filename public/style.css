@@ -16,7 +16,7 @@ body, html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-nav.left-navbar {
+.left-navbar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,21 +29,21 @@ nav.left-navbar {
   font-weight: 900;
 }
 
-aside {
+.aside {
   background-color: black;
   height: 100%;
 }
 
-.left-navbar a {
+.left-navbar-a {
   color: lightgray;
 }
 
-.left-navbar a:hover {
+.left-navbar-a:hover {
   color: white;
   transition: 0.2s;
 }
 
-.left-navbar a.active {
+.left-navbar-a.active {
   color: white
 }
 
@@ -70,7 +70,7 @@ aside {
   align-items: center;
 }
 
-.top-navbar button {
+.top-navbar-button {
   background-color: black;
   border: 1px solid;
   color: white;
@@ -102,14 +102,14 @@ aside {
   align-items: center;
 }
 
-.recommendation-card img {
+.recommendation-card-img {
   height: 80px;
   width: 80px;
 }
 
 .category-container {
   display: grid;
-  padding: 0px;
+  padding: 0;
   gap: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
@@ -117,7 +117,7 @@ aside {
 .item-card {
   display: block;
   width: auto;
-  height: 300;
+  height: 300px;
   padding: 10px 10px;
   background-color: #282828;
   border-radius: 8px;
@@ -129,7 +129,7 @@ aside {
   background-color: gray;
 }
 
-.item-card img {
+.item-card-img {
   height: 150px;
   width: 100%;
   border-radius: 8px;
