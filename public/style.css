@@ -1,0 +1,136 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.left-navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+
+  font-size: large;
+  font-weight: 900;
+}
+
+.aside {
+  background-color: black;
+  height: 100%;
+}
+
+.left-navbar-a {
+  color: lightgray;
+}
+
+.left-navbar-a:hover {
+  color: white;
+  transition: 0.2s;
+}
+
+.left-navbar-a.active {
+  color: white
+}
+
+.main-area {
+  background-color: #181818;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.top-navbar {
+  height: 45px;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-right: 10px;
+  background-color: blue;
+
+  top:0;
+  position: sticky;
+
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.top-navbar-button {
+  background-color: black;
+  border: 1px solid;
+  color: white;
+  height: 80%;
+  border-radius: 500px;
+
+  padding: 8px 34px;
+
+  font-weight: 800;
+}
+
+
+.recommendations-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.recommendation-card {
+  height: 80px;
+  border-radius: 2px;
+  background-color: #282828;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+
+  transition: 0.3s;
+
+  align-items: center;
+}
+
+.recommendation-card-img {
+  height: 80px;
+  width: 80px;
+}
+
+.category-container {
+  display: grid;
+  padding: 0;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.item-card {
+  display: block;
+  width: auto;
+  height: 300px;
+  padding: 10px 10px;
+  background-color: #282828;
+  border-radius: 8px;
+  text-overflow: ellipsis;
+  transition: 0.3s;
+}
+
+.item-card:hover, .recommendation-card:hover {
+  background-color: gray;
+}
+
+.item-card-img {
+  height: 150px;
+  width: 100%;
+  border-radius: 8px;
+}
