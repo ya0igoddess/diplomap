@@ -1,3 +1,4 @@
+// главный скрипт страницы
 import {Api} from './api.js'
 import { ItemList } from './ItemList.js';
 

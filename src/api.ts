@@ -1,11 +1,17 @@
 import { ItemCard } from "./ItemCard.js";
 
+/**
+ * Статический класс для взаимодействия с API
+ */
 export class Api {
     static client_id = '394d689d42e44d819e095e2d4d2bc579'; // Your client id
     static client_secret = '541e4e44e0a143619ec35912e7e6988e'; // Your secret
     static token_url = 'https://accounts.spotify.com/api/token'
-    static access_token = 'BQDFLn0U3TqcLy8PCUq8lWjaa76yg6eAH51AUaOTq1kRdp82IkxaANqBB3G1LUrFzruXhLetnvc1Lc6PCRQ'
-
+    static access_token = null
+    /**
+     * Обновление токена
+     * @returns {Promise<any>} - Промис с запросом токена
+     */
     private static update_token() {
        return fetch(this.token_url, {
           method: 'POST',
@@ -25,6 +31,10 @@ export class Api {
         })
     }
 
+    /**
+     * Проверка необходимости запроса токена
+     * @returns {Promise<any>} - Промис с проверкой (или промис с проверкой, если новый токен не нужен)
+     */
     private static checkAuth() : Promise<any> {
       if (this.access_token === null)
         return this.update_token();
@@ -32,6 +42,11 @@ export class Api {
         return Promise.resolve();
     }
 
+    /**
+     * Запрос списка с новыми релизами
+     * @param limit
+     * @returns - Промис со списком недавних релизов
+     */
     static get_new_releases(limit:number = 8) : Promise<ItemCard[]> {
       return this.checkAuth()
       .then(() => fetch(`https://api.spotify.com/v1/browse/new-releases?limit=${limit}`, {

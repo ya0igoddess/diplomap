@@ -1,10 +1,19 @@
+/**
+ * Класс карточки-элемента для коллекции
+ */
 export class ItemCard {
     private itemName:string
     private aritstNames:string[]
     private imgUrl:string
     private href:string
 
-
+    /**
+     * @constructor
+     * @param itemName - Название трека/альбома
+     * @param artistNames - Массив с именами авторов
+     * @param imgUrl - URL обложки
+     * @param href - Ссылка на трек на официальный сайт
+     */
     constructor(itemName: string, artistNames: string[], imgUrl: string, href:string) {
         this.itemName = itemName;
         this.aritstNames = artistNames;
@@ -12,6 +21,10 @@ export class ItemCard {
         this.href = href
     }
 
+    /**
+     * Отрисовка карточки
+     * @returns {HTMLElement} Верстка карточки
+     */
     public render(): HTMLElement {
         let div = document.createElement('div');
         div.classList.add('item-card');
