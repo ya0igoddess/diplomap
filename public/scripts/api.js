@@ -1,7 +1,14 @@
-import { ItemCard } from "./ItemCard.js";
+import { Item } from "./ItemCard.js";
+/**
+ * Статический класс для взаимодействия с API
+ */
 var Api = /** @class */ (function () {
     function Api() {
     }
+    /**
+     * Обновление токена
+     * @returns {Promise<any>} - Промис с запросом токена
+     */
     Api.update_token = function () {
         var _this = this;
         return fetch(this.token_url, {
@@ -20,12 +27,21 @@ var Api = /** @class */ (function () {
             console.log(_this.access_token);
         });
     };
+    /**
+     * Проверка необходимости запроса токена
+     * @returns {Promise<any>} - Промис с проверкой (или промис с проверкой, если новый токен не нужен)
+     */
     Api.checkAuth = function () {
         if (this.access_token === null)
             return this.update_token();
         else
             return Promise.resolve();
     };
+    /**
+     * Запрос списка с новыми релизами
+     * @param limit
+     * @returns - Промис со списком недавних релизов
+     */
     Api.get_new_releases = function (limit) {
         var _this = this;
         if (limit === void 0) { limit = 8; }
@@ -39,14 +55,14 @@ var Api = /** @class */ (function () {
         }); })
             .then(function (res) { return res.json(); })
             .then(function (json) { return json.albums.items.map(function (item) {
-            return new ItemCard(item.name, item.artists.map(function (artist) { return artist.name; }), item.images[1].url, item.href);
+            return new Item(item.name, item.artists.map(function (artist) { return artist.name; }), item.images[1].url, item.href);
         }); })
             .catch(alert);
     };
     Api.client_id = '394d689d42e44d819e095e2d4d2bc579'; // Your client id
     Api.client_secret = '541e4e44e0a143619ec35912e7e6988e'; // Your secret
     Api.token_url = 'https://accounts.spotify.com/api/token';
-    Api.access_token = 'BQDFLn0U3TqcLy8PCUq8lWjaa76yg6eAH51AUaOTq1kRdp82IkxaANqBB3G1LUrFzruXhLetnvc1Lc6PCRQ';
+    Api.access_token = null;
     return Api;
 }());
 export { Api };

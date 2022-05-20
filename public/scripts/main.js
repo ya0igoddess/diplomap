@@ -1,3 +1,4 @@
+// главный скрипт страницы
 import { Api } from './api.js';
 import { ItemList } from './ItemList.js';
 var mainArea = document.getElementsByClassName('main-area')[0];
