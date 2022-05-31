@@ -1,4 +1,4 @@
-import { ItemCard } from "./ItemCard.js";
+import { Item} from "./Item";
 
 /**
  * Статический класс для взаимодействия с API
@@ -35,7 +35,7 @@ export class Api {
      * Проверка необходимости запроса токена
      * @returns {Promise<any>} - Промис с проверкой (или промис с проверкой, если новый токен не нужен)
      */
-    private static checkAuth() : Promise<any> {
+    static checkAuth() : Promise<any> {
       if (this.access_token === null)
         return this.update_token();
       else
@@ -47,7 +47,7 @@ export class Api {
      * @param limit
      * @returns - Промис со списком недавних релизов
      */
-    static get_new_releases(limit:number = 8) : Promise<ItemCard[]> {
+    static get_new_releases(limit:number = 8) : Promise<Item[]> {
       return this.checkAuth()
       .then(() => fetch(`https://api.spotify.com/v1/browse/new-releases?limit=${limit}`, {
         method: 'GET',
@@ -58,7 +58,7 @@ export class Api {
       }))
       .then(res => res.json())
       .then(json => json.albums.items.map(item => 
-        new ItemCard(item.name, 
+        new Item(item.name, 
           item.artists.map(artist => artist.name), 
           item.images[1].url, 
           item.href)))

@@ -1,4 +1,4 @@
-import { ItemCard } from "./ItemCard.js";
+import { Item } from "./Item";
 
 /**
  * Класс-контейнер для карточек
@@ -6,14 +6,14 @@ import { ItemCard } from "./ItemCard.js";
 export class ItemList {
 
     name: string;
-    items: ItemCard[];
+    items: Item[];
 
     /**
      * @constructor
      * @param name {} - Заголовок раздела-контейнера
-     * @param items {ItemCard[]} - Набор карточек в контейнере
+     * @param items {Item[]} - Набор карточек в контейнере
      */
-    constructor(name:string, items: ItemCard[]) {
+    constructor(name:string, items: Item[]) {
         this.name = name;
         this.items = items;
     }

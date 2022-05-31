@@ -1,11 +1,19 @@
+
+export interface IItem {
+    itemName:string
+    aritstNames:string[]
+    imgUrl:string
+    href:string
+}
+
 /**
  * Класс карточки-элемента для коллекции
- */
-export class ItemCard {
-    private itemName:string
-    private aritstNames:string[]
-    private imgUrl:string
-    private href:string
+ */ 
+export class Item {
+    itemName:string
+    aritstNames:string[]
+    imgUrl:string
+    href:string
 
     /**
      * @constructor
